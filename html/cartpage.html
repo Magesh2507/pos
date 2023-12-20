@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Payment Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"></script>
+</head>
+
+<body>
+  <!--<div id="message" class="message hidden"></div>alert div-->
+  <div class="main">
+    <nav class="zoho-title"></nav>
+    <div class="payment-page">
+
+      <div class="left-side">
+        <div class="cart-page">
+          <table class="cart-table">
+            <tr>
+              <th class="th" style="width:10% !important;">S.No.</th>
+              <th class="th" style="width:35% !important; text-align:center">Products</th>
+              <th class="th" style="width:30% !important;">Quantity</th>
+              <th class="th" style="width:25% !important;" colspan="2">Amount</th>
+            </tr>
+          </table>
+        </div> <!-- Card-Page -->
+
+        <div class="cart-subtotal">
+          <table>
+            <tr>
+              <div>
+                <td colspan="9">Sub Total</td>
+                <td class="currency sub-total" id="sub-total">₹0.00</td>
+              </div>
+            </tr>
+            <tr>
+              <div>
+                <td colspan="9">Tax</td>
+                <td class="currency" id="sub-tax">₹0.00</td>
+              </div>
+            </tr>
+            <!-- <tr style="display: none !important;">
+              <div >
+                <td colspan="9">Bill Discount</td>
+                <td class="currency" id="sub-discount">₹0.00</td>
+              </div>
+            </tr>
+            <tr style="display: none !important;">
+              <div>
+                <td colspan="9">Round Off</td>
+                <td class="currency" id="sub-r-off">₹0.00</td>
+              </div>
+            </tr> -->
+          </table>
+        </div>
+
+        <div class="cart-footer">
+          <div style="display: flex; align-items: center;">
+            <h1 class="total-name">Total</h1>
+            <span class="card-item-num">(Items:0,Quantity:0)</span>
+          </div>
+          <h1 class="cp-total-price" id="cartpage-totalprice">₹0.00</h1>
+        </div>
+      </div> <!-- Left-Side -->
+
+      <div class="right-side">
+
+        <div class="order-info" id="order-info">
+          <h2 class="o-i-h2">Amount to be Paid</h2>
+          <h4 class="currency" id="toPaid">₹0.00</h4>
+        </div>
+        <div class="order-info-2">
+          <h2 class="o-i-2-h2">Payment Options</h2>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <button class="btns">Cash</button>
+            <button class="btns">Credit Cards</button>
+          </div>
+        </div>
+        <div class="order-info-3">
+          <h2>Payment Summary</h2>
+          <div class="payment-summary">
+            <div class="payment-summary-divs">
+              <h4 class="title-1">Cash</h4>
+              <h4 class="answer-1 currency">₹<input type="text" id="cash" class="cash-input" onchange="cashChange(this)"
+                  size="8"></h4>
+            </div>
+            <div class="payment-summary-divs" style="display: none !important;">
+              <h4 class="title-2">Total Amount Paid</h4>
+              <h4 class="answer-2 currency">₹<input type="text" id="paid" class="cash-input" onchange="cashChange(this)"
+                  size="8"></h4>
+            </div>
+            <div class="payment-summary-divs">
+              <h4 class="title-3">Balance to be Given</h4>
+              <h4 class="answer-3 currency">₹<input type="text" id="balance" class="cash-input"
+                  onchange="cashChange(this)" size="8" disabled></h4>
+            </div>
+          </div>
+        </div>
+        <div class="order-info-4">
+          <button class="btns" onclick="redirectIndexPage()" >Back to Sale</button><!--style="display: none !important;"-->
+          <button class="proceed-btn" onclick="redirectlastPage()">Proceed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/App.js"></script>
+  <script>
+    window.onload = function () {
+      ZOHO.CREATOR.init()
+        .then(function (data) {
+          console.log("Creator Initiated")
+          var queryParams = ZOHO.CREATOR.UTIL.getQueryParams();
+          if(queryParams.cus_id){
+            console.log(queryParams.cus_id)
+          }
+          console.log(queryParams)
+          // var initparams = ZOHO.CREATOR.UTIL.getInitParams();
+          // console.log(initparams)
+
+        }).catch(function (error) {
+          // Handle initialization errors if necessary
+          console.error("Error initializing SDK:", error);
+        })
+    }
+  </script>
+  
+</body>
+
+</html>

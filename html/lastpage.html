@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Payment Page 2</title>
+  <script src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"></script>
+</head>
+
+<body>
+
+  <div class="payment-page-2">
+    <div class="left-side">
+      <div class="cart-page">
+        <table class="cart-table">
+          <tr>
+            <th class="th" style="width:10% !important;">S.No.</th>
+            <th class="th" style="width:35% !important; text-align:center">Products</th>
+            <th class="th" style="width:30% !important;">Quantity</th>
+            <th class="th" style="width:25% !important;" colspan="2">Amount</th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="cart-footer">
+        <div style="display: flex; align-items: center;">
+          <h1 class="total-name">Total</h1>
+          <span class="card-item-num">(Items:0,Quantity:0)</span>
+        </div>
+        <h1 class="total-price" id="toPaid">₹0.00</h1>
+      </div>
+    </div> <!-- Left-Side -->
+
+    <div class="right-side">
+
+      <div>
+        <center><br /><br />
+          <i>&#10003;</i>
+          <p class="check-icon-name">Billed Successfully !</p>
+        </center>
+      </div>
+
+      <div class="order-info">
+        <div style="display: flex; justify-content: space-between;">
+          <span class="span1">Bill Number</span>
+          <span class="span2">SA-001</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span class="span1">Amount Paid</span>
+          <span class="span2" id="amount-paid">₹0.00</span>
+        </div>
+        <div style="display: none !important; justify-content: space-between;">
+          <span class="span1">Balance Amount</span>
+          <span class="span2">₹0.00</span>
+        </div>
+      </div>
+
+      <div class="order-info-2">
+        <span class="span1">Customer Info &nbsp;</span>
+        <span class="span1 span1-highlight">Mark Zuckerberg - 4358776</span>
+        <span class="span1">No 14, Washington DC - 600028</span>
+      </div>
+
+
+      <div class="order-info-4">
+        <p>Generate Invoice as</p><br />
+        <button class="btns">PDF</button>
+        <button class="btns" style="display: none !important;">XPS</button>
+        <button class="btns">Print</button>
+      </div>
+
+      <div class="order-info-5">
+        <button class="" onclick="complete()">Done</button>
+      </div>
+    </div> <!-- Right-Side -->
+  </div>
+
+  <script src="../js/App.js"></script>
+  <script>
+    window.onload = function () {
+      ZOHO.CREATOR.init()
+        .then(function (data) {
+          console.log("Creator Initiated")
+          var queryParams = ZOHO.CREATOR.UTIL.getQueryParams();
+          if(queryParams.cus_id){
+            console.log(queryParams.cus_id)
+          }
+          console.log(queryParams)
+          // var initparams = ZOHO.CREATOR.UTIL.getInitParams();
+          // console.log(initparams)
+
+        }).catch(function (error) {
+          // Handle initialization errors if necessary
+          console.error("Error initializing SDK:", error);
+        })
+    }
+  </script>
+
+</body>
+
+</html>
